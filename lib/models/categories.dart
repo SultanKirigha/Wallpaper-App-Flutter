@@ -13,22 +13,22 @@ class Categories {
   static List<CategoriesModel> categories = [
     CategoriesModel(
       title: 'Nature',
-      collectionId: '1',
+      collectionId: '1319040',
       imageUrl: 'https://images.unsplash.com/photo-1657214059175-53cb22261d38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8bmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60'
     ),
     CategoriesModel(
         title: 'Art',
-        collectionId: '2',
+        collectionId: '11531318',
         imageUrl: 'https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60'
     ),
     CategoriesModel(
         title: 'Office',
-        collectionId: '3',
+        collectionId: '304898',
         imageUrl: 'https://images.unsplash.com/photo-1664575601786-b00156752b61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8b2ZmaWNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60'
     ),
     CategoriesModel(
         title: 'People',
-        collectionId: '4',
+        collectionId: '402491',
         imageUrl: 'https://images.unsplash.com/photo-1657664073337-31394d7e5c7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60'
     ),
     CategoriesModel(

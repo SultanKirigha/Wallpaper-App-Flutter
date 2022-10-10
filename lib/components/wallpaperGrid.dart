@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaperapp/screens/fullScreenView.dart';
 
 import '../models/wallpapers.dart';
 
@@ -18,12 +19,19 @@ class WallpaperGrid extends StatelessWidget {
               crossAxisSpacing: 10,
               mainAxisSpacing: 10
       ), itemBuilder: (ctx,i){
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Container(
-            child: Image.network(
-              wallpapers[i].urlModels.regular,
-              fit: BoxFit.cover,),),
+        return GestureDetector(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (ctx) => FullScreenView(id: wallpapers[i].id,
+              imageurl: wallpapers[i].urlModels.regular ,
+            )));
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+              child: Image.network(
+                wallpapers[i].urlModels.regular,
+                fit: BoxFit.cover,),),
+          ),
         );
       }),
     );
