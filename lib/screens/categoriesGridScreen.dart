@@ -3,6 +3,7 @@ import 'package:wallpaperapp/models/categories.dart';
 import 'package:wallpaperapp/screens/categorieswallpaperScreen.dart';
 
 class CategoriesGridScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Padding(

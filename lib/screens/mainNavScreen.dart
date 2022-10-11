@@ -50,11 +50,12 @@ class _MainNavScreenState extends State<MainNavScreen> {
 
                 items: [
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.category),label: 'categories',
-                  ),
-                  BottomNavigationBarItem(
                     icon: Icon(Icons.search),label: 'search',
                   ),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.category),label: 'categories',
+                  ),
+
                 ],
               ),
             ),

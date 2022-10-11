@@ -1,12 +1,16 @@
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../models/wallpapers.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:dio/dio.dart';
 
 
 class FullScreenView extends StatefulWidget {
   final String imageurl;
   final String id;
+
 
   FullScreenView({required this.id, required this.imageurl});
 
@@ -15,7 +19,20 @@ class FullScreenView extends StatefulWidget {
 }
 
 class _FullScreenViewState extends State<FullScreenView> {
+  bool _isLoading = false;
   List<WallpaperModel> wallpapers = [];
+  Future getData() async{
+    try {
+      setState(() {
+        _isLoading = true;
+      });
+    }
+    finally{
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
   @override
   void dispose() {
     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
@@ -26,10 +43,31 @@ class _FullScreenViewState extends State<FullScreenView> {
     SystemChrome.setEnabledSystemUIOverlays([]);
     super.initState();
   }
+  _saveImage() async{
+    _requestPermission();
+    var response = await Dio().get(widget.imageurl,
+        options: Options(responseType: ResponseType.bytes));
+    final result =await ImageGallerySaver.saveImage(
+      Uint8List.fromList(response.data),
+      name: DateTime.now().toString());
+      print(result);
+  }
+
+  _requestPermission() async{
+    Map<Permission, PermissionStatus> statuses = await[
+      Permission.storage,
+    ].request();
+    final info = statuses[Permission.storage].toString();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: _isLoading == true ? Center(
+        child: SpinKitWave(
+          color: Colors.pink,
+          size: 50.0,
+        ),
+      ) : SafeArea(
         child: Stack(
           children: [
             Container(
@@ -60,7 +98,7 @@ class _FullScreenViewState extends State<FullScreenView> {
                 right: 10,
 
                 child:ElevatedButton(
-                  onPressed: (){},
+                  onPressed: _saveImage,
                   child: Text('Download', style: TextStyle(color: Colors.black))
                   ,)
             )
