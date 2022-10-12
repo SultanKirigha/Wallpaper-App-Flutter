@@ -93,14 +93,18 @@ class _FullScreenViewState extends State<FullScreenView> {
                 ),
             ),
             Positioned(
-              bottom: 15,
-                left: 10,
-                right: 10,
+              bottom: 20,
+                left: 60,
+                right: 60,
 
-                child:ElevatedButton(
+                child:ElevatedButton.icon(
                   onPressed: _saveImage,
-                  child: Text('Download', style: TextStyle(color: Colors.black))
-                  ,)
+                  label: const Text('Download', style: TextStyle(color: Colors.white)),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 20,
+                  ),
+                  icon: const Icon(Icons.download),
+                )
             )
           ],
         ),
